@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class HotelTest {
@@ -12,8 +14,7 @@ public class HotelTest {
     ConferenceRoom conferenceRoom1;
     ConferenceRoom conferenceRoom2;
     Guest guest1;
-    Guest guest2;
-    Guest guest3;
+    DiningRoom diningRoom;
     @Before
     public void before(){
         hotel = new Hotel();
@@ -23,6 +24,7 @@ public class HotelTest {
         conferenceRoom1 = new ConferenceRoom(RoomType.CONFERENCE, "Eagle");
         conferenceRoom2 = new ConferenceRoom(RoomType.CONFERENCE, "Lion");
         guest1 = new Guest("Jeff");
+        diningRoom = new DiningRoom(RoomType.DININGROOM, "Bite Site", 120);
     }
 
     @Test
@@ -88,5 +90,27 @@ public class HotelTest {
         hotel.addBedroom(bedroom1);
         Booking booking = hotel.bookRoom(bedroom1, 3);
         assertEquals(3, booking.getNights());
+    }
+
+    @Test
+    public void diningRoomsStartsEmpty() {
+        assertEquals(0, hotel.getDiningRooms().size());
+    }
+
+    @Test
+    public void canAddDiningRoomToHashMap() {
+        hotel.addDiningRoom(diningRoom);
+        assertEquals(1, hotel.getDiningRooms().size());
+    }
+
+    @Test
+    public void canGetArrayOfEmptyRooms() {
+        hotel.addBedroom(bedroom1);
+        hotel.addBedroom(bedroom2);
+        hotel.addBedroom(bedroom3);
+        hotel.addGuestToBedroom(2,guest1);
+        ArrayList emptyRooms = hotel.getEmptyRooms();
+        assertEquals(2, emptyRooms.size());
+
     }
 }

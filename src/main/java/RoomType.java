@@ -4,7 +4,8 @@ public enum RoomType {
     DOUBLE(2),
     TRIPLE(3),
     FAMILY(4),
-    CONFERENCE(30);
+    CONFERENCE(30),
+    DININGROOM(100);
 
 
 
