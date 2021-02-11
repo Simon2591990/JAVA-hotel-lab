@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Hotel {
 
-    ArrayList<Bedroom> bedrooms;
-    ArrayList<ConferenceRoom> conferenceRooms;
+    private ArrayList<Bedroom> bedrooms;
+    private ArrayList<ConferenceRoom> conferenceRooms;
 
     public Hotel() {
         this.bedrooms = new ArrayList<Bedroom>();
@@ -24,5 +24,37 @@ public class Hotel {
 
     public void addConferenceRoom(ConferenceRoom conferenceRoom) {
         this.conferenceRooms.add(conferenceRoom);
+    }
+
+
+    public void addGuestToBedroom(int roomNumber, Guest guest) {
+        for (Bedroom bedroom : this.bedrooms) {
+            if (bedroom.getRoomNumber() == roomNumber) {
+                bedroom.addGuest(guest);
+            }
+        }
+    }
+
+    public void addGuestToConferenceRoom(String roomName, Guest guest) {
+        for (ConferenceRoom conferenceRoom : this.conferenceRooms){
+            if (conferenceRoom.getName() == roomName){
+                conferenceRoom.addGuest(guest);
+            }
+        }
+    }
+    public void removeGuestFromBedroom(int roomNumber, Guest guest) {
+        for (Bedroom bedroom : this.bedrooms) {
+            if (bedroom.getRoomNumber() == roomNumber) {
+                bedroom.removeGuest(guest);
+            }
+        }
+    }
+
+    public void removeGuestFromConferenceRoom(String roomName, Guest guest) {
+        for (ConferenceRoom conferenceRoom : this.conferenceRooms){
+            if (conferenceRoom.getName() == roomName){
+                conferenceRoom.removeGuest(guest);
+            }
+        }
     }
 }

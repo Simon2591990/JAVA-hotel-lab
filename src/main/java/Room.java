@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public abstract class Room {
-    RoomType roomType;
-    int capacity;
-    ArrayList<Guest> guests;
+    private RoomType roomType;
+    private int capacity;
+    private ArrayList<Guest> guests;
 
     public Room(RoomType roomType) {
         this.roomType = roomType;

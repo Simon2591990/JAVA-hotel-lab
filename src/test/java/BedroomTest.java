@@ -31,20 +31,20 @@ public class BedroomTest {
 
     @Test
     public void guestListStartsEmpty() {
-        assertEquals(0, bedroom.guests.size());
+        assertEquals(0, bedroom.getGuests().size());
     }
 
     @Test
     public void canAddGuests() {
         bedroom.addGuest(guest);
-        assertEquals(1, bedroom.guests.size());
+        assertEquals(1, bedroom.getGuests().size());
     }
 
     @Test
     public void canRemoveGuest() {
         bedroom.addGuest(guest);
         bedroom.removeGuest(guest);
-        assertEquals(0, bedroom.guests.size());
+        assertEquals(0, bedroom.getGuests().size());
     }
 
     @Test
@@ -55,7 +55,7 @@ public class BedroomTest {
         bedroom.addGuest(guest);
         bedroom.addGuest(guest);
         bedroom.emptyRoom();
-        assertEquals(0, bedroom.guests.size());
+        assertEquals(0, bedroom.getGuests().size());
     }
 
     @Test

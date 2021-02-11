@@ -1,6 +1,6 @@
 public class ConferenceRoom extends Room {
 
-    String name;
+    private String name;
 
     public ConferenceRoom(RoomType roomType, String name) {
         super(roomType);

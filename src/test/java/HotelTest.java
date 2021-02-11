@@ -22,27 +22,64 @@ public class HotelTest {
         bedroom3 = new Bedroom(RoomType.TRIPLE, 3);
         conferenceRoom1 = new ConferenceRoom(RoomType.CONFERENCE, "Eagle");
         conferenceRoom2 = new ConferenceRoom(RoomType.CONFERENCE, "Lion");
+        guest1 = new Guest("Jeff");
     }
 
     @Test
     public void bedroomListStartsEmpty() {
-        assertEquals(0, hotel.bedrooms.size());
+        assertEquals(0, hotel.getBedrooms().size());
     }
 
     @Test
     public void conferenceRoomListStarsEmpty() {
-        assertEquals(0, hotel.conferenceRooms.size());
+        assertEquals(0, hotel.getConferenceRooms().size());
     }
 
     @Test
     public void canAddBedroom() {
         hotel.addBedroom(bedroom1);
-        assertEquals(1, hotel.bedrooms.size());
+        assertEquals(1, hotel.getBedrooms().size());
     }
 
     @Test
     public void canAddConferenceRoom() {
         hotel.addConferenceRoom(conferenceRoom1);
-        assertEquals(1, hotel.conferenceRooms.size());
+        assertEquals(1, hotel.getConferenceRooms().size());
+    }
+
+    @Test
+    public void canAddGuestToRoom() {
+        hotel.addBedroom(bedroom1);
+        hotel.addBedroom(bedroom2);
+        hotel.addBedroom(bedroom3);
+        hotel.addGuestToBedroom(2,guest1);
+        assertEquals(0, bedroom1.getGuests().size());
+        assertEquals(1, bedroom2.getGuests().size());
+        assertEquals(0, bedroom3.getGuests().size());
+    }
+
+    @Test
+    public void canAddGuestToConferenceRoom() {
+        hotel.addConferenceRoom(conferenceRoom1);
+        hotel.addConferenceRoom(conferenceRoom2);
+        hotel.addGuestToConferenceRoom("Lion", guest1);
+        assertEquals(0, conferenceRoom1.getGuests().size());
+        assertEquals(1, conferenceRoom2.getGuests().size());
+    }
+
+    @Test
+    public void canRemoveGuestFromBedroom() {
+        hotel.addBedroom(bedroom1);
+        hotel.addGuestToBedroom(1,guest1);
+        hotel.removeGuestFromBedroom(1, guest1);
+        assertEquals(0, bedroom1.getGuests().size());
+    }
+
+    @Test
+    public void canRemoveGuestFromConference() {
+        hotel.addConferenceRoom(conferenceRoom1);
+        hotel.addGuestToConferenceRoom("Eagle", guest1);
+        hotel.removeGuestFromConferenceRoom("Eagle", guest1);
+        assertEquals(0, conferenceRoom1.getGuests().size());
     }
 }
