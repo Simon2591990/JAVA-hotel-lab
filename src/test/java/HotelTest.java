@@ -82,4 +82,11 @@ public class HotelTest {
         hotel.removeGuestFromConferenceRoom("Eagle", guest1);
         assertEquals(0, conferenceRoom1.getGuests().size());
     }
+
+    @Test
+    public void canMakeBooking() {
+        hotel.addBedroom(bedroom1);
+        Booking booking = hotel.bookRoom(bedroom1, 3);
+        assertEquals(3, booking.getNights());
+    }
 }
