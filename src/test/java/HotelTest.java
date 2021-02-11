@@ -33,4 +33,16 @@ public class HotelTest {
     public void conferenceRoomListStarsEmpty() {
         assertEquals(0, hotel.conferenceRooms.size());
     }
+
+    @Test
+    public void canAddBedroom() {
+        hotel.addBedroom(bedroom1);
+        assertEquals(1, hotel.bedrooms.size());
+    }
+
+    @Test
+    public void canAddConferenceRoom() {
+        hotel.addConferenceRoom(conferenceRoom1);
+        assertEquals(1, hotel.conferenceRooms.size());
+    }
 }

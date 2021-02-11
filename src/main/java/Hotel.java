@@ -18,4 +18,11 @@ public class Hotel {
         return conferenceRooms;
     }
 
+    public void addBedroom(Bedroom bedroom) {
+        this.bedrooms.add(bedroom);
+    }
+
+    public void addConferenceRoom(ConferenceRoom conferenceRoom) {
+        this.conferenceRooms.add(conferenceRoom);
+    }
 }
